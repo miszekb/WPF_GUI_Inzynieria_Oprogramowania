@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="IO Code Editor" Height="576.707" Width="1004.454">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Menu RenderTransformOrigin="0.506,-0.997" Margin="0,0,0,519" HorizontalAlignment="Left" Width="996">
+            <MenuItem Header="Plik" Height="27" Width="33" Click="MenuItem_Click_1" RenderTransformOrigin="0.481,0.331"/>
+            <MenuItem Header="Edytuj" Height="27" Width="45" RenderTransformOrigin="-0.028,0.883"/>
+            <MenuItem Header="Zaznaczenie" Height="27" Width="77"/>
+            <MenuItem Header="Znajdź" Height="27" Width="50"/>
+            <MenuItem Header="Idź do" Height="27" Width="49"/>
+            <MenuItem Header="Narzędzia" Height="27" Width="66"/>
+            <MenuItem Header="Projekt" Height="27" Width="51"/>
+            <MenuItem Header="Preferencje" Height="27" Width="73"/>
+            <MenuItem Header="Pomoc" Height="27" Width="52"/>
+        </Menu>
+        <ListBox HorizontalAlignment="Left" Height="0" Margin="137,64,0,0" VerticalAlignment="Top" Width="8"/>
+        <TextBlock HorizontalAlignment="Left" Margin="137,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="748" Height="480" Foreground="Black" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"><Run Text="#include &lt;iostream&gt;"/><LineBreak/><Run Text="#include &lt;cstdlib&gt;"/><LineBreak/><Run/><LineBreak/><Run Text="using namespace std;"/><LineBreak/><Run/><LineBreak/><Run Text="int main()"/><LineBreak/><Run Text="{}{"/><LineBreak/><Run Text="&#x9;for ( unsigned int = 0;  i &lt; n; i++)"/><LineBreak/><Run Text="&#x9;{"/><LineBreak/><Run Text="&#x9;&#x9;cout&lt;&lt;&quot;Lorem Ipsum dolor sit amet&quot;&lt;&lt;endl;"/><LineBreak/><Run Text="&#x9;}"/><LineBreak/><Run/><LineBreak/><Run Text="&#x9;return 0;"/><LineBreak/><Run Text="}"/><LineBreak/><Run/></TextBlock>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="480" Margin="128,32,0,0" VerticalAlignment="Top" Width="734">
+            <Label Content="GitHub" RenderTransformOrigin="-0.071,0.36" Margin="769,2,-108,331" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="480" Margin="10,32,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="-2.39,-1.76"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="480" Margin="867,32,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="-0.01,0.24">
+            <Menu Margin="0,35,0,324">
+                <MenuItem Header="Clone repository" Height="31" Width="132"/>
+                <MenuItem Header="Create repository" Height="31" Width="132"/>
+                <MenuItem Header="Sign in" Height="31" Width="132"/>
+                <MenuItem Header="Sign out" Height="31" Width="132" Click="MenuItem_Click"/>
+            </Menu>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="19" Margin="10,517,0,0" VerticalAlignment="Top" Width="976"/>
+
     </Grid>
 </Window>
