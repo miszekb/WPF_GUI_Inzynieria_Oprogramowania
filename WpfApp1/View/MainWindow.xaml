@@ -10,12 +10,16 @@
     <Window.Resources>
         <vm:MainViewModel x:Key="MainViewModel"/>
     </Window.Resources>
-    <Grid>
+    <Grid DataContext="{StaticResource MainViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Menu RenderTransformOrigin="0.506,-0.997" Margin="0,0,0,519" HorizontalAlignment="Left" Width="996">
-            <MenuItem Header="Plik" Height="27" Width="33" Click="MenuItem_Click_1" RenderTransformOrigin="0.481,0.331"/>
+        <Menu RenderTransformOrigin="0.506,-0.997" Margin="0,0,0,510.2" HorizontalAlignment="Left" Width="996">
+            <MenuItem Header="Plik" Height="27" Width="33" RenderTransformOrigin="0.481,0.331">
+                <MenuItem x:Name="menuItemOpenFile" Header="Otworz Plik" Command="{Binding OpenFileCommand}"/>
+                <MenuItem x:Name="menuItemSaveFile" Header="Zapisz Plik" Command="{Binding SaveFileCommand}"/>
+                <MenuItem x:Name="menuItemExit" Header="EXIT" Command="{Binding ExitCommand}"/>
+            </MenuItem>
             <MenuItem Header="Edytuj" Height="27" Width="45" RenderTransformOrigin="-0.028,0.883"/>
             <MenuItem Header="Zaznaczenie" Height="27" Width="77"/>
             <MenuItem Header="Znajdź" Height="27" Width="50"/>
@@ -26,20 +30,34 @@
             <MenuItem Header="Pomoc" Height="27" Width="52"/>
         </Menu>
         <ListBox HorizontalAlignment="Left" Height="0" Margin="137,64,0,0" VerticalAlignment="Top" Width="8"/>
-        <TextBlock HorizontalAlignment="Left" Margin="137,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="748" Height="480" Foreground="Black" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"><Run Text="#include &lt;iostream&gt;"/><LineBreak/><Run Text="#include &lt;cstdlib&gt;"/><LineBreak/><Run/><LineBreak/><Run Text="using namespace std;"/><LineBreak/><Run/><LineBreak/><Run Text="int main()"/><LineBreak/><Run Text="{}{"/><LineBreak/><Run Text="&#x9;for ( unsigned int = 0;  i &lt; n; i++)"/><LineBreak/><Run Text="&#x9;{"/><LineBreak/><Run Text="&#x9;&#x9;cout&lt;&lt;&quot;Lorem Ipsum dolor sit amet&quot;&lt;&lt;endl;"/><LineBreak/><Run Text="&#x9;}"/><LineBreak/><Run/><LineBreak/><Run Text="&#x9;return 0;"/><LineBreak/><Run Text="}"/><LineBreak/><Run/></TextBlock>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="480" Margin="128,32,0,0" VerticalAlignment="Top" Width="734">
-            <Label Content="GitHub" RenderTransformOrigin="-0.071,0.36" Margin="769,2,-108,331" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="33" Margin="867,42,0,0" VerticalAlignment="Top" Width="119">
+            <Label Content="GitHub" RenderTransformOrigin="-4.732,0.033" Margin="9.2,-0.8,-13.4,-13.8" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="480" Margin="10,32,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="-2.39,-1.76"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="480" Margin="867,32,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="-0.01,0.24">
-            <Menu Margin="0,35,0,324">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="470" Margin="10,42,0,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="-2.39,-1.76"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="470" Margin="867,42,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="-0.01,0.24">
+            <Menu Margin="0.2,35.2,-0.4,308.6">
                 <MenuItem Header="Clone repository" Height="31" Width="132"/>
                 <MenuItem Header="Create repository" Height="31" Width="132"/>
                 <MenuItem Header="Sign in" Height="31" Width="132"/>
-                <MenuItem Header="Sign out" Height="31" Width="132" Click="MenuItem_Click"/>
+                <MenuItem Header="Sign out" Height="31" Width="132"/>
             </Menu>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="19" Margin="10,517,0,0" VerticalAlignment="Top" Width="976"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="470" Margin="128,42,0,0" VerticalAlignment="Top" Width="734">
+            <TextBox x:Name="FileTextBox" TextWrapping="Wrap" Text="{Binding FileText, UpdateSourceTrigger=PropertyChanged}" Margin="0.2,0.2,-3,-1.4"/>
+        </Border>
+        <Grid x:Name="FindWindow" HorizontalAlignment="Left" Height="200" Margin="137,297,0,0" VerticalAlignment="Top" Width="714" Background="#FF5F00E4">
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="714">
+                <Grid HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="714" Margin="0,0,-2,-1.6">
+                    <Label Content="Podaj frazę do wyszukania" HorizontalAlignment="Left" Height="51" VerticalAlignment="Top" Width="704" FontSize="20" FontWeight="Bold" Margin="10,0,0,0"/>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="48" Margin="10,56,0,0" VerticalAlignment="Top" Width="694">
+                        <TextBox x:Name="FindTextBox" TextWrapping="Wrap" Text="{Binding FindText, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Border>
+                    <Button x:Name="buttonFind" Content="Szukaj" HorizontalAlignment="Left" Margin="381,140,0,0" VerticalAlignment="Top" Width="150" Height="50" Command="{Binding FindCommand}"/>
+                    <Button x:Name="buttonCancelFind" Content="Anuluj" HorizontalAlignment="Left" Margin="554,140,0,0" VerticalAlignment="Top" Width="150" Height="50" Command="{Binding CancelFindCommand}"/>
+                </Grid>
+            </Border>
+        </Grid>
 
     </Grid>
 </Window>
