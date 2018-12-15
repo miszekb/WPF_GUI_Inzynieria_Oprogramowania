@@ -1,11 +1,15 @@
-﻿<Window x:Class="WpfApp1.MainWindow"
+﻿<Window x:Class="WpfApp1.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+         xmlns:vm="clr-namespace:WpfApp1.ViewModel"
         mc:Ignorable="d"
         Title="IO Code Editor" Height="576.707" Width="1004.454">
+    <Window.Resources>
+        <vm:MainViewModel x:Key="MainViewModel"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
